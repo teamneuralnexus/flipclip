@@ -19,7 +19,7 @@ const openFeature = (n, state) => {
     <div class="min-h-screen relative">
         <div class="grid grid-cols-2">
             <div class="size-[170px] pt-10 pl-7 ">
-                <img src="/fc.png">
+                <nuxt-link to="/browse"><img src="/fc.png"></nuxt-link>
             </div>
           <div class="ml-auto mr-20 mt-16 spartan text-2xl font-semibold"><h1 class="border-b-[3px] hover:cursor-pointer relative z-10 border-black"><nuxt-link external to="/login">Login</nuxt-link></h1></div>
         </div>

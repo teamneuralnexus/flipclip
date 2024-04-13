@@ -1,13 +1,17 @@
 <script setup>
 const route = useRoute()
+const router = useRouter()
 console.log(route.params.slug)
 onMounted(async ()=>{
-    await $fetch('/api/indexArxiv', {
+    const paperId = await $fetch('/api/indexArxiv', {
         params: {
             id: route.params.slug,
             title: route.query.title
         }
     })
+
+    window.location.href = '/paper/' + paperId
+    
 })
 </script>
 <template>

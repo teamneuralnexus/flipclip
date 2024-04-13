@@ -31,33 +31,29 @@ export default defineEventHandler(async (event)=>{
             image_url: ""
         })
     });
-  //   const res = await embeddings.embedQuery(`${searchTerm}`)
-  //   const dataFromDATABASE = await sql`
-  //   SELECT DISTINCT ON (id) id, image_url, title, similarity_score
-  //   FROM (
-  //     SELECT
-  //       id,
-  //       image_url,
-  //       title,
-  //       title_embedding <-> ${pgvector.toSql(res)} AS similarity_score
-  //     FROM
-  //       papers
-  //     ORDER BY
-  //       id, similarity_score ASC
-  //     LIMIT 10
-  //   ) AS subquery
-  //   ORDER BY
-  //     id, similarity_score ASC
-  
-  // `
-  //   dataFromDATABASE.forEach((k)=>{
-  //       searchArray.push({
-  //           type: "indexed",
-  //           id: k.id,
-  //           title: k.title,
-  //           image_url: k.image_url
-  //       })
-  //   })
+    const res = await embeddings.embedQuery(`${searchTerm}`)
+    const dataFromDATABASE = await sql`
+      SELECT
+        paper_id,
+        arxiv_id,
+        image_url,
+        title,
+        title_embedding <-> ${pgvector.toSql(res)} AS similarity_score
+      FROM
+        paper_data
+      ORDER BY
+        paper_id, similarity_score ASC
+      LIMIT 10
+  `
+    dataFromDATABASE.forEach((k)=>{
+        searchArray.unshift({
+            type: "indexed",
+            paper_id: k.paper_id,
+            id: "http://arxiv.org/abs/" + k.arxiv_id,
+            title: k.title,
+            image_url: k.image_url
+        })
+    })
     return searchArray
 
 })
