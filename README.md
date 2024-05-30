@@ -1,6 +1,4 @@
-# Nuxt 3 Minimal Starter
-
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![image](https://github.com/teamneuralnexus/flipclip/assets/42414965/c5808453-8611-411d-b2f3-9073e9ebaf78)
 
 ## Setup
 
