@@ -17,7 +17,7 @@
     "@lucia-auth/adapter-postgresql": "^3.1.2",
     "arctic": "^1.5.0",
     "audio-waves-player": "github:jonalxh/audio-waves-player",
-    "langchain": "^0.1.33",
+    "langchain": "^0.3.15",
     "lucia": "^3.1.1",
     "microsoft-cognitiveservices-speech-sdk": "^1.36.0",
     "oslo": "^1.2.0",
